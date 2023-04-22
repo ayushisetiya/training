@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int scoreOfParentheses(string s) {
+        stack<string>s1;
+        long long sum=0;
+        for(int i=0;i<s.size();i++)
+        {
+            string ans="";
+           if(s[i]=='(')
+       {ans+=s[i];
+           s1.push(ans);
+       }
+            else{
+            if(s[i]==')'&&s1.top()=="("){
+            s1.pop();
+            s1.push("1");
+            }
+            else
+            { sum=0;
+             while(!s1.empty()&&s1.top()!="(")
+             { sum+=stoi(s1.top());
+                 s1.pop();
+             }
+             s1.pop();
+             int t=2*sum;
+             s1.push(to_string(t));
+            }
+            }
+            
+        }
+        sum=0;
+        while(!s1.empty())
+        {
+            sum+=stoll(s1.top());
+            s1.pop();
+        }
+        return sum;
+    }
+};
