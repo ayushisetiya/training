@@ -1,0 +1,15 @@
+//return the address of the string
+char* reverse(char *S, int len)
+{ stack<char>ip;
+
+for(int i=0;i<len;i++)
+ip.push(S[i]);
+int mi=0;
+while(!ip.empty())
+{
+    S[mi]=ip.top();
+    ip.pop();
+    mi++;
+}
+return S;
+    //code here
